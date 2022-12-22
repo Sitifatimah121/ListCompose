@@ -1,4 +1,4 @@
-package com.jetpackproject.jetmovie.view.home
+package com.jetpackproject.jetmovie.Screen.detail
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -10,16 +10,19 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.launch
 
-class HomeViewModel(
+class DetailViewModel(
     private val repository: MovieRepository
-) : ViewModel() {
-    private val _state: MutableStateFlow<State<List<Movie>>> = MutableStateFlow(State.Loading)
-    val state: StateFlow<State<List<Movie>>>
-        get() = _state
+    ) : ViewModel() {
 
-    fun getAllMovie(){
+    private val _state: MutableStateFlow<State<Movie>> =
+        MutableStateFlow(State.Loading)
+
+    val state: StateFlow<State<Movie>>
+    get() = _state
+
+    fun getMovieById(movieId: Int) =
         viewModelScope.launch {
-            repository.getAllMovie()
+            repository.getMovieById(movieId)
                 .catch {
                     _state.value = State.Error(it.message.toString())
                 }
@@ -27,5 +30,5 @@ class HomeViewModel(
                     _state.value = State.Success(movie)
                 }
         }
-    }
+
 }

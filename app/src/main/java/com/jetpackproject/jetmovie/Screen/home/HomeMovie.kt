@@ -1,7 +1,9 @@
-package com.jetpackproject.jetmovie.view.home
+package com.jetpackproject.jetmovie.Screen.home
 
 import android.content.ContentValues.TAG
 import android.util.Log
+import androidx.compose.animation.core.tween
+import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.lazy.LazyColumn
@@ -19,10 +21,10 @@ import com.jetpackproject.jetmovie.util.State
 @Composable
 fun HomeMovie (
     modifier: Modifier = Modifier,
+    navigateToDetail: (Int) -> Unit,
     viewModel: HomeViewModel = viewModel(
         factory = ViewModelFactory(Injection.provideRepository())
     ),
-    navigateToDetail: (Int) -> Unit,
 ){
     viewModel.state.collectAsState(initial = State.Loading).value.let { state ->
         when(state){
@@ -43,25 +45,28 @@ fun HomeMovie (
     }
 }
 
+@OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun MovieContent (
     movie: List<Movie>,
+    navigateToDetail: (Int) -> Unit,
     modifier: Modifier = Modifier,
-    navigateToDetail: (Int) -> Unit
-){
-    Box(modifier = modifier){
+    ){
         LazyColumn{
             items(movie) { movie ->
                 MovieListItem(
                     title = movie.title,
                     genre = movie.genre,
                     photoUrl = movie.photoUrl,
-                    modifier = Modifier.clickable {
+                    modifier = Modifier
+                        .animateItemPlacement(tween(durationMillis = 200))
+                        .clickable {
                         navigateToDetail(movie.id)
                     }
                 )
+                Log.d(TAG, "MovieClick: ${movie.id}")
             }
             Log.d(TAG, "MovieContent: ${movie.size}}")
         }
-    }
+
 }

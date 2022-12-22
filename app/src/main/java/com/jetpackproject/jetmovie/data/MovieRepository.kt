@@ -20,10 +20,10 @@ class MovieRepository {
         return flowOf(movie)
     }
 
-    fun getMovieById(movieId: Int): Movie{
-        return movie.first{
-            it.id == movieId
-        }
+    fun getMovieById(movieId: Int): Flow<Movie>{
+        return flowOf(movie.first{
+            it.id == movieId })
+
     }
 
     companion object {

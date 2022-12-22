@@ -17,7 +17,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
-import com.jetpackproject.jetmovie.view.home.HomeMovie
+import com.jetpackproject.jetmovie.Screen.home.HomeMovie
 import com.jetpackproject.jetmovie.navigation.NavigationItem
 import com.jetpackproject.jetmovie.navigation.Screen
 import com.jetpackproject.jetmovie.ui.theme.JetMovieTheme
@@ -57,7 +57,7 @@ fun MovieAppNavigation (
                 route = Screen.DetailMovie.route,
                 arguments = listOf(navArgument("movieId"){type = NavType.IntType}),
             ){
-                val id = it.arguments?.getInt("movieId") ?: 0
+                val id = it.arguments?.getInt("movieId") ?: -1
                 DetailMovie(
                     movieId = id,
                     navigateToBack = { navController.navigateUp()

@@ -3,8 +3,8 @@ package com.jetpackproject.jetmovie
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.jetpackproject.jetmovie.data.MovieRepository
-import com.jetpackproject.jetmovie.view.detail.DetailViewModel
-import com.jetpackproject.jetmovie.view.home.HomeViewModel
+import com.jetpackproject.jetmovie.Screen.detail.DetailViewModel
+import com.jetpackproject.jetmovie.Screen.home.HomeViewModel
 
 class ViewModelFactory(private val repository: MovieRepository) : ViewModelProvider.NewInstanceFactory(){
 
