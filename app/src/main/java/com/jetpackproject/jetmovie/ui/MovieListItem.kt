@@ -20,6 +20,7 @@ import com.jetpackproject.jetmovie.ui.theme.JetMovieTheme
 
 @Composable
 fun MovieListItem(
+    movieId: Int,
     title: String,
     genre: String,
     photoUrl: String,
@@ -60,6 +61,7 @@ fun MovieListItem(
 fun MovieAppPreview(){
     JetMovieTheme {
         MovieListItem(
+            movieId = 1,
             title = "Paradise City",
             genre = "Fantasy",
             photoUrl = "https://github.com/Sitifatimah121/JetHeroes/blob/Sitifatimah121-assets/paradise%20city.jpeg?raw=true",

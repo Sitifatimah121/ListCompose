@@ -6,6 +6,7 @@ import androidx.compose.animation.core.tween
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.runtime.Composable
@@ -34,7 +35,7 @@ fun HomeMovie (
 
             is State.Success -> {
                 MovieContent(
-                    movie = state.data,
+                    listMovie = state.data,
                     modifier = modifier,
                     navigateToDetail = navigateToDetail
                 )
@@ -45,9 +46,23 @@ fun HomeMovie (
     }
 }
 
+@Composable
+fun MovieContent(
+    listMovie: List<Movie>,
+    navigateToDetail: (Int) -> Unit,
+    modifier: Modifier = Modifier,
+){
+    Column() {
+        ListMovie(
+            movie = listMovie,
+            navigateToDetail = navigateToDetail
+        )
+    }
+}
+
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
-fun MovieContent (
+fun ListMovie (
     movie: List<Movie>,
     navigateToDetail: (Int) -> Unit,
     modifier: Modifier = Modifier,
@@ -55,14 +70,15 @@ fun MovieContent (
         LazyColumn{
             items(movie) { movie ->
                 MovieListItem(
+                    movieId = movie.id,
                     title = movie.title,
                     genre = movie.genre,
                     photoUrl = movie.photoUrl,
                     modifier = Modifier
                         .animateItemPlacement(tween(durationMillis = 200))
                         .clickable {
-                        navigateToDetail(movie.id)
-                    }
+                            navigateToDetail(movie.id)
+                        }
                 )
                 Log.d(TAG, "MovieClick: ${movie.id}")
             }

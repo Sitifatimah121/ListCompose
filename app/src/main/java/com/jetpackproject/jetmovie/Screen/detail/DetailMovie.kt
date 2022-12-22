@@ -40,6 +40,7 @@ fun DetailMovie (
             is State.Success -> {
                 val data = state.data
                 DetailContent(
+                    movieId = data.id,
                     title = data.title,
                     genre = data.genre,
                     photoUrl = data.photoUrl,
@@ -53,6 +54,7 @@ fun DetailMovie (
 }
 @Composable
 fun DetailContent(
+    movieId: Int,
     title: String,
     genre: String,
     photoUrl: String,
@@ -126,6 +128,7 @@ fun DetailContent(
 fun DetailMoviePreview(){
     JetMovieTheme {
         DetailContent(
+            1,
             "R.I.P.D. 2: Rise of the Damned",
             "action",
             "https://github.com/Sitifatimah121/JetHeroes/blob/Sitifatimah121-assets/Rise%20of%20the%20Damned.jpeg?raw=true",
