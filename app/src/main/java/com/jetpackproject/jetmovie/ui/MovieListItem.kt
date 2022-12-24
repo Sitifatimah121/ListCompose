@@ -28,7 +28,8 @@ fun MovieListItem(
 ){
     Row(
         verticalAlignment = Alignment.CenterVertically,
-        modifier = modifier.clickable {}
+        modifier = modifier
+            .fillMaxWidth()
     ) {
         Column() {
             AsyncImage(
@@ -61,7 +62,7 @@ fun MovieListItem(
 fun MovieAppPreview(){
     JetMovieTheme {
         MovieListItem(
-            movieId = 1,
+            movieId = 0,
             title = "Paradise City",
             genre = "Fantasy",
             photoUrl = "https://github.com/Sitifatimah121/JetHeroes/blob/Sitifatimah121-assets/paradise%20city.jpeg?raw=true",

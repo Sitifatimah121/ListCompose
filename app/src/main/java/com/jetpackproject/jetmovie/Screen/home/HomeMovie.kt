@@ -55,7 +55,8 @@ fun MovieContent(
     Column() {
         ListMovie(
             movie = listMovie,
-            navigateToDetail = navigateToDetail
+            navigateToDetail = navigateToDetail,
+            modifier = modifier
         )
     }
 }
@@ -67,7 +68,7 @@ fun ListMovie (
     navigateToDetail: (Int) -> Unit,
     modifier: Modifier = Modifier,
     ){
-        LazyColumn{
+        LazyColumn(modifier = modifier){
             items(movie) { movie ->
                 MovieListItem(
                     movieId = movie.id,
