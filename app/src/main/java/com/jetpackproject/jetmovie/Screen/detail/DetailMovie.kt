@@ -19,7 +19,7 @@ import coil.compose.AsyncImage
 import com.jetpackproject.jetmovie.Screen.detail.DetailViewModel
 import com.jetpackproject.jetmovie.di.Injection
 import com.jetpackproject.jetmovie.ui.theme.JetMovieTheme
-import com.jetpackproject.jetmovie.util.State
+import com.jetpackproject.jetmovie.util.UiState
 
 @Composable
 fun DetailMovie (
@@ -32,12 +32,12 @@ fun DetailMovie (
     navigateToBack: () -> Unit,
     modifier: Modifier = Modifier,
 ){
-    viewModel.state.collectAsState(initial = State.Loading).value.let { state ->
+    viewModel.state.collectAsState(initial = UiState.Loading).value.let { state ->
         when(state){
-            is State.Loading -> {
+            is UiState.Loading -> {
                 viewModel.getMovieById(movieId)
             }
-            is State.Success -> {
+            is UiState.Success -> {
                 val data = state.data
                 DetailContent(
                     movieId = data.id,
@@ -48,7 +48,7 @@ fun DetailMovie (
                     description = data.description,
                 )
             }
-            is State.Error -> {}
+            is UiState.Error -> {}
         }
     }
 }
@@ -74,7 +74,7 @@ fun DetailContent(
                 contentDescription = null,
                 contentScale = ContentScale.Fit,
                 modifier = Modifier
-                    .padding(16.dp)
+                    .padding(top = 22.dp)
                     .size(200.dp)
             )
             Spacer(modifier = Modifier.width(2.dp))

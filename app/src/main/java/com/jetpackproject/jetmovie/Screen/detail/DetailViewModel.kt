@@ -6,9 +6,8 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.jetpackproject.jetmovie.data.MovieRepository
 import com.jetpackproject.jetmovie.model.Movie
-import com.jetpackproject.jetmovie.util.State
+import com.jetpackproject.jetmovie.util.UiState
 import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.launch
@@ -17,8 +16,8 @@ class DetailViewModel(
     private val repository: MovieRepository
     ) : ViewModel() {
 
-    private val _state: MutableStateFlow<State<Movie>> =
-        MutableStateFlow(State.Loading)
+    private val _state: MutableStateFlow<UiState<Movie>> =
+        MutableStateFlow(UiState.Loading)
 
     val state = _state.asStateFlow()
 
@@ -26,10 +25,10 @@ class DetailViewModel(
         viewModelScope.launch {
             repository.getMovieById(movieId)
                 .catch {
-                    _state.value = State.Error(it.message.toString())
+                    _state.value = UiState.Error(it.message.toString())
                 }
                 .collect{ id ->
-                    _state.value = State.Success(id)
+                    _state.value = UiState.Success(id)
                 }
             Log.d(ContentValues.TAG, "getAllMovieDetail: ${movieId}")
 
