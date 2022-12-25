@@ -1,4 +1,4 @@
-package com.jetpackproject.jetmovie
+package com.jetpackproject.jetmovie.ui
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.Card
@@ -6,6 +6,7 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
@@ -23,7 +24,8 @@ fun MovieListItem(
     photoUrl: String,
     modifier: Modifier = Modifier
 ) {
-    Card(modifier = modifier.padding(6.dp)) {
+    Card(
+        modifier = modifier.padding(4.dp).shadow(6.dp)) {
         Row(
             verticalAlignment = Alignment.CenterVertically,
             modifier = modifier
@@ -54,7 +56,9 @@ fun MovieListItem(
                     fontWeight = FontWeight.Normal,
                 )
             }
+
         }
+
     }
 }
 

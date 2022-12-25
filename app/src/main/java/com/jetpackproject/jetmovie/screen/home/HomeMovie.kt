@@ -1,7 +1,5 @@
-package com.jetpackproject.jetmovie.Screen.home
+package com.jetpackproject.jetmovie.screen.home
 
-import android.content.ContentValues.TAG
-import android.util.Log
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.clickable
@@ -13,11 +11,11 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.lifecycle.viewmodel.compose.viewModel
-import com.jetpackproject.jetmovie.MovieListItem
+import com.jetpackproject.jetmovie.ui.SearchBar
+import com.jetpackproject.jetmovie.ui.MovieListItem
 import com.jetpackproject.jetmovie.ViewModelFactory
 import com.jetpackproject.jetmovie.di.Injection
 import com.jetpackproject.jetmovie.model.Movie
-import com.jetpackproject.jetmovie.ui.SearchBar
 import com.jetpackproject.jetmovie.util.UiState
 
 @Composable

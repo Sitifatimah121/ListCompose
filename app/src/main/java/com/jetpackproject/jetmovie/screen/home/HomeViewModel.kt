@@ -1,4 +1,4 @@
-package com.jetpackproject.jetmovie.Screen.home
+package com.jetpackproject.jetmovie.screen.home
 
 import android.content.ContentValues.TAG
 import android.util.Log

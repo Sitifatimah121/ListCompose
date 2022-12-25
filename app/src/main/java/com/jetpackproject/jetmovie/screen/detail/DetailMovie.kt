@@ -16,7 +16,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import coil.compose.AsyncImage
-import com.jetpackproject.jetmovie.Screen.detail.DetailViewModel
+import com.jetpackproject.jetmovie.screen.detail.DetailViewModel
 import com.jetpackproject.jetmovie.di.Injection
 import com.jetpackproject.jetmovie.ui.theme.JetMovieTheme
 import com.jetpackproject.jetmovie.util.UiState

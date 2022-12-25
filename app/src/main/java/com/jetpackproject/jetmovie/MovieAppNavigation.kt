@@ -17,7 +17,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
-import com.jetpackproject.jetmovie.Screen.home.HomeMovie
+import com.jetpackproject.jetmovie.screen.home.HomeMovie
 import com.jetpackproject.jetmovie.navigation.NavigationItem
 import com.jetpackproject.jetmovie.navigation.Screen
 import com.jetpackproject.jetmovie.ui.theme.JetMovieTheme
